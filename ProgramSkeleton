@@ -18,17 +18,68 @@ public class Program
 // Start Hero Classes
 public class Hero
 {
-    // Health
-    // Attack
-    // Defense
-    // Level
-    // Experience Counter
-    // Inventory
+    public string Name { get; set; }
+    public int Health { get; set; }
+    public int MaxHealth { get; set; }
+    public int Attack { get; set; }
+    public int Defense { get; set; }
+    public int SkillCoolDown { get; set; }
+    public int Level { get; set; }
+    public int Experience { get; set; }
+    public List<Item> Inventory { get; set; }
+    public Hero(string name, int health, int maxhealth, int attack, int defense, int skillcooldown, int level, int experience)
+    {
+        Name = name;
+        Health = health;
+        Attack = attack;
+        Defense = defense;
+        SkillCoolDown = skillcooldown;
+        Level = level;
+        Experience = experience;
+        Inventory = new List<Item>();
+    }
+    public virtual void UseSkill() { }
 }
-public class Cleric : Hero { }
-public class Sorcerer : Hero { }
-public class Troubadour : Hero { }
-public class Cellist : Hero { }
+public class Cleric : Hero 
+{
+    public Cleric(string name, int health, int maxhealth, int attack, int defense, int skillcooldown, int level, int experience)
+        : base(name, health, maxhealth, attack, defense, skillcooldown, level, experience) { }
+    public override void UseSkill() 
+    {
+        // FINISH ME: Heals another player for a certain random amount within a range
+        SkillCoolDown = 2;
+    }
+}
+public class Sorcerer : Hero
+{
+    public Sorcerer(string name, int health, int maxhealth, int attack, int defense, int skillcooldown, int level, int experience)
+        : base(name, health, maxhealth, attack, defense, skillcooldown, level, experience) { }
+    public override void UseSkill()
+    {
+        // FINISH ME: Fire spell - AOE attacks all enemies
+        SkillCoolDown = 5;
+    }
+}
+public class Troubadour : Hero
+{
+    public Troubadour(string name, int health, int maxhealth, int attack, int defense, int skillcooldown, int level, int experience)
+        : base(name, health, maxhealth, attack, defense, skillcooldown, level, experience) { }
+    public override void UseSkill()
+    {
+        // FINISH ME: Add Smoke Screen // Let's him use two turns but not skill again
+        SkillCoolDown = 3;
+    }
+}
+public class Cellist : Hero
+{
+    public Cellist(string name, int health, int maxhealth, int attack, int defense, int skillcooldown, int level, int experience)
+        : base(name, health, maxhealth, attack, defense, skillcooldown, level, experience) { }
+    public override void UseSkill()
+    {
+        // FINISH ME: Add Absolute Defense Skill
+        SkillCoolDown = 3;
+    }
+}
 // End Hero Classes
 
 
@@ -37,12 +88,39 @@ public class Cellist : Hero { }
 // Start Enemy Classes
 public class Enemy
 {
-    // Health
-    // Attack
-    // Level
+    public string Name { get; set; }
+    public int Health { get; set; }
+    public int Attack { get; set; }
+    public int Level { get; set; }
+    public Enemy(string name, int health, int attack, int level)
+    {
+        Name = name;
+        Health = health;
+        Attack = attack;
+        Level = level;
+    }
+    public virtual void AttackPlayer(Hero target)
+    {
+        // FINISH ME:
+        Console.WriteLine($"{Name} attacks player for {Attack} points of damage!");
+        target.Health -= Attack;
+    }
 }
-public class Goblin : Enemy { }
-public class  Boss : Enemy { }
+public class  Boss : Enemy
+{
+    public Boss(string name, int health, int attack, int level)
+        : base(name, health, attack, level) { }
+    public override void AttackPlayer(Hero target)
+    {
+        int bossDamage = Attack * 2;
+
+    }
+    public void UseSkill(Hero target)
+    {
+        // FINISH ME:
+        Console.WriteLine("");
+    }
+}
 // End Enemy Classes
 
 
@@ -83,12 +161,12 @@ public class InventoryManager : Game
 }
 public class UserInterface : Game
 {
-    public static void DisplayActionMenu(Hero hero) { }
-    public static void DisplayHeroStats(Hero hero) { }
-    public static void DisplayEnemyStats(Enemy enemy) { }
-    public static void DisplayDefeatScreen() { }
-    public static void DisplayVictoryScreen() { }
-    public static void DisplayRewardScreen() { }
+    public static void DisplayActionMenu() { } // FINISH ME: 
+    public static void DisplayHeroStats(Hero hero) { }  // FINISH ME: 
+    public static void DisplayEnemyStats(Enemy enemy) { }   // FINISH ME: 
+    public static void DisplayDefeatScreen() { }    // FINISH ME: 
+    public static void DisplayVictoryScreen() { }   // FINISH ME: 
+    public static void DisplayRewardScreen() { }    // FINISH ME: 
 }
 // End Game Classes
 
@@ -105,12 +183,14 @@ public class UserInterface : Game
 // DungeonRoom Class
 public class DungeonRoom
 {
+    public List<Enemy> Enemies { get; set; }
+    public List<Item> Loot { get; set; }
+    string RoomSprite { get; set; }
+    public string Description { get; set; }
+
     public DungeonRoom()
     {
-        // public List<Enemy> Enemies { get; set; }
-        // public List<Item> Loot { get; set; }
-        // FINISH ME: RoomSprite { get; set; }
-        // public string Description { get; set; }
+        
     }
 
     // Populates the Dungeon
