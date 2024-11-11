@@ -1,0 +1,165 @@
+using System;
+// Start Program
+public class Program
+{
+    static void Main(string[] args)
+    {
+        // Game.InitializeGame();
+        // Game.StartGameLoop();
+    }
+}
+// End Program
+
+
+
+
+
+
+// Start Hero Classes
+public class Hero
+{
+    // Health
+    // Attack
+    // Defense
+    // Level
+    // Experience Counter
+    // Inventory
+}
+public class Cleric : Hero { }
+public class Sorcerer : Hero { }
+public class Troubadour : Hero { }
+public class Cellist : Hero { }
+// End Hero Classes
+
+
+
+
+// Start Enemy Classes
+public class Enemy
+{
+    // Health
+    // Attack
+    // Level
+}
+public class Goblin : Enemy { }
+public class  Boss : Enemy { }
+// End Enemy Classes
+
+
+
+
+
+
+
+
+
+// Game Classes
+public class Game
+{
+    // InitializeGameLoop();
+    // DisplayMainMenu();
+    // StartGameLoop();
+    // TerminateProgram();
+}
+public class GameMenu : Game    // Main Menu
+{
+
+}
+public class GameMainFunctions : Game
+{
+
+}
+public class CombatManager : Game
+{
+
+}
+public class LevelManager : Game
+{
+
+}
+public class InventoryManager : Game
+{
+
+}
+public class UserInterface : Game
+{
+    public static void DisplayActionMenu(Hero hero) { }
+    public static void DisplayHeroStats(Hero hero) { }
+    public static void DisplayEnemyStats(Enemy enemy) { }
+    public static void DisplayDefeatScreen() { }
+    public static void DisplayVictoryScreen() { }
+    public static void DisplayRewardScreen() { }
+}
+// End Game Classes
+
+
+
+
+
+
+
+
+
+
+
+// DungeonRoom Class
+public class DungeonRoom
+{
+    public DungeonRoom()
+    {
+        // public List<Enemy> Enemies { get; set; }
+        // public List<Item> Loot { get; set; }
+        // FINISH ME: RoomSprite { get; set; }
+        // public string Description { get; set; }
+    }
+
+    // Populates the Dungeon
+    public void EnterDungeon() { }  // FINISH ME: 
+    public void DescribeCurrentRoom() { }   // FINISH ME: 
+
+    // Gives Loot
+    // public List<Item> GiveLoot() { }
+
+    // Visuals
+    public void DisplayRoomSprite() { } // FINISH ME: 
+    public void DisplayRoomEnemies() { }    // FINISH ME: 
+    public void DisplayHeroes() { } // FINISH ME: 
+    public void DisplayDungeonIntro() { }   // FINISH ME: 
+}
+// End DungeonRoom
+
+
+
+
+
+
+
+
+
+
+// Start Item Classes
+public class Item
+{
+    public string Name { get; set; }
+    public int EffectAmount { get; set; }
+    public int Duration { get; set; }
+
+    public Item(string name, int effectAmount, int duration)
+    {
+        Name = name;
+        EffectAmount = effectAmount;
+        Duration = duration;    // in rounds
+    }
+
+    public void UseItem(Hero target) { }
+    private void ApplyEffect(Hero target) { }
+
+}
+// End Item Classes
+
+
+
+
+
+
+
